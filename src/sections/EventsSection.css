@@ -1,0 +1,232 @@
+.events-section {
+  padding: 140px 80px;
+  background: var(--color-surface);
+}
+
+.events-section__inner {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.events-section__header {
+  max-width: 680px;
+  margin-bottom: 80px;
+}
+
+.events-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--color-white);
+  line-height: 1.05;
+}
+
+.events-section__title em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.events-section__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--color-white-dim);
+  margin-top: 24px;
+}
+
+/* Events grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--color-border);
+  margin-bottom: 80px;
+}
+
+.event-card {
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.event-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.event-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.event-card:hover .event-card__img-wrap img {
+  transform: scale(1.05);
+}
+
+.event-card__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.2) 100%);
+}
+
+.event-card__title {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+.event-card__body {
+  padding: 24px;
+}
+
+.event-card__body p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--color-white-muted);
+}
+
+/* Venue table */
+.events-venues {
+  margin-bottom: 80px;
+}
+
+.events-venues__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--color-white);
+  margin-bottom: 32px;
+}
+
+.events-venues__table {
+  border: 1px solid var(--color-border);
+}
+
+.events-venue-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.events-venue-row:last-child { border-bottom: none; }
+.events-venue-row:hover { background: var(--color-surface-2); }
+
+.events-venue-row__num {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+}
+
+.events-venue-row__name {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.events-venue-row__cap {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.events-venue-row__type {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-white-muted);
+  white-space: nowrap;
+}
+
+.events-venue-row__btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-white-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.events-venue-row__btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* KPIs */
+.events-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.events-kpi {
+  background: var(--color-surface);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: background var(--transition-fast);
+}
+
+.events-kpi:hover { background: var(--color-surface-2); }
+
+.events-kpi__value {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.events-kpi__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+}
+
+@media (max-width: 1024px) {
+  .events-venue-row { grid-template-columns: 1fr auto auto; }
+  .events-venue-row__num { display: none; }
+  .events-venue-row__type { display: none; }
+}
+
+@media (max-width: 768px) {
+  .events-section { padding: 80px 24px; }
+  .events-grid { grid-template-columns: 1fr; }
+  .events-kpis { grid-template-columns: repeat(2, 1fr); }
+  .events-venue-row { grid-template-columns: 1fr auto; }
+  .events-venue-row__cap { display: none; }
+}

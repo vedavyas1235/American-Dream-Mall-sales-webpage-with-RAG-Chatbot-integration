@@ -1,0 +1,152 @@
+================================================================================
+  AMERICAN DREAM MEGA-MALL — INTERACTIVE SALES DECK
+  Implementation Plan — Phase 1
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+Client:        American Dream (East Rutherford, NJ)
+Type:          Browser-Based Interactive Sales Deck
+Purpose:       Close leasing, sponsorship, and event booking deals
+Audience:      Prospective tenants, brand partners, event promoters
+
+TECH STACK
+----------
+Framework:     React 18 + TypeScript (Vite)
+Styling:       Vanilla CSS (CSS Modules) — NO Tailwind
+Animations:    Framer Motion (scroll-triggered, cinematic transitions)
+Routing:       React Router DOM (supports Phase 2 expandability)
+Icons:         Lucide React
+Fonts:         Google Fonts — Cormorant Garamond (luxury headings) + Inter (body)
+Media:         Real-world YouTube embeds + Pexels free-use video URLs
+AI Assets:     AI-generated imagery via Gemini image generation tool
+
+DESIGN DIRECTION
+----------------
+Tone:          Modern. Confident. High-energy. Cinematic.
+Color Palette:
+  - Background:  #0a0a0a (near black)
+  - Accent Gold: #c9a84c (luxury warm gold)
+  - White:       #f5f5f0 (off-white)
+  - Surface:     #141414
+Aesthetic:     Dark luxury (inspired by Apple.com, Tesla, Louis Vuitton)
+Typography:    Serif for display, Sans-serif for body — tight letter-spacing
+Motion:        Scroll-triggered reveals, parallax video, number count-ups
+
+PHASE 1 — SECTION STRUCTURE
+----------------------------
+
+SECTION 1: CINEMATIC HERO
+  - Full-screen autoplay muted background video (American Dream promo footage)
+  - Overlay: "NOT JUST A DESTINATION. A NEW STANDARD."
+  - Scroll indicator + non-linear nav overlay (top navigation)
+  - Fade-in animation on load
+
+SECTION 2: WHY AMERICAN DREAM (The Scale)
+  - Location context: 14 miles from NYC, New Jersey Metro
+  - Interactive animated stat counters:
+      → 3.5M sq ft  (Largest mall in North America)
+      → 40M+ visitors/year
+      → 450+ stores & restaurants
+      → 16 major attractions
+  - Map visual: NY/NJ catchment area
+  - Scroll-triggered reveal animations
+
+SECTION 3: THE AVENUE (Luxury Retail)
+  - Dedicated luxury wing showcase
+  - Tenants: Saks Fifth Avenue, Louis Vuitton, Hermès, Dior, Gucci, etc.
+  - Aesthetic: All-white, editorial photography style
+  - Sub-text: "The only luxury retail destination with a theme park next door"
+
+SECTION 4: DINING & LIFESTYLE
+  - Food hall + dining highlights
+  - Real imagery/video of the dining experience
+  - Narrative: "Over 100 dining options — from fast casual to fine dining"
+  - Animated grid of dining highlights
+
+SECTION 5: ATTRACTIONS & ENTERTAINMENT
+  - Showcases the mega-attractions:
+      → Big SNOW (North America's only indoor real snow ski slope)
+      → Nickelodeon Universe (largest indoor theme park in North America)
+      → DreamWorks Water Park (largest indoor water park in North America)
+      → Legoland Discovery Center
+      → SEA LIFE Aquarium
+  - Horizontal scroll or carousel with video previews
+  - Differentiator headline: "Where else can you ski and ride a roller coaster
+    in the same afternoon?"
+
+SECTION 6: EVENTS & THE PLATFORM
+  - Concert hall / activation space showcase
+  - Key data: event capacity, footfall during events, brand activation ROI
+  - Real examples: major events hosted at American Dream
+  - Position as: "A global platform, not just a building"
+  - CTA: "Plan Your Activation"
+
+SECTION 7: CALL TO ACTION (The Deal Closer)
+  - Three distinct paths:
+      → Button 1: "Explore Leasing Opportunities"
+      → Button 2: "Discuss Brand Partnerships"
+      → Button 3: "Book an Event"
+  - Contact form (modal or inline)
+  - Dark, cinematic background — bold, inviting design
+
+NON-LINEAR NAVIGATION
+---------------------
+- Sticky top nav with section labels
+- Clicking any nav item smooth-scrolls to that section
+- Active section highlighted in nav
+- Mobile hamburger menu (responsive)
+
+PERFORMANCE STRATEGY
+--------------------
+- Lazy loading for all images and videos
+- Intersection Observer API for scroll-triggered animations
+- Code-split routes for Phase 2 modules
+- Optimized assets: WebP images, compressed video
+- Target: 90+ Lighthouse Score
+
+FILE STRUCTURE
+--------------
+src/
+  components/
+    Nav/
+    Hero/
+    StatCounter/
+    SectionWrapper/
+    AttractionCard/
+    CTASection/
+  sections/
+    HeroSection.tsx
+    ScaleSection.tsx
+    LuxurySection.tsx
+    DiningSection.tsx
+    AttractionsSection.tsx
+    EventsSection.tsx
+    CTASection.tsx
+  hooks/
+    useScrollAnimation.ts
+    useCountUp.ts
+    useVideoAutoplay.ts
+  styles/
+    global.css
+    variables.css
+    animations.css
+  App.tsx
+  main.tsx
+
+PHASE 2 — EXPANDABLE MODULES (Planned, Not Built Yet)
+------------------------------------------------------
+- /leasing    → Leasing Paths (Luxury / Retail / F&B / Pop-Up)
+- /events     → Event Booking Module (capacities, past events, booking CTA)
+- /sponsors   → Sponsorship Tiers Module (audience data, activation examples)
+- /venues     → Venue-Specific Deep Dives
+
+DEPLOYMENT
+----------
+- Platform: Vercel or Netlify (free tier, instant CI/CD)
+- Live URL: auto-generated on push to main branch
+- Repository: GitHub (public), clean commits, full README
+
+================================================================================
+  END OF PLAN
+================================================================================

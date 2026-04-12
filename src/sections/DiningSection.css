@@ -1,0 +1,154 @@
+.dining-section {
+  padding: 140px 80px;
+  background: var(--color-bg);
+}
+
+.dining-section__inner {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.dining-section__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+
+.dining-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--color-white);
+  line-height: 1.05;
+}
+
+.dining-section__title em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.dining-section__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--color-white-dim);
+  margin-top: 16px;
+}
+
+/* Card grid */
+.dining-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.dining-card {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  background: var(--color-surface);
+}
+
+.dining-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.dining-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.dining-card:hover .dining-card__img-wrap img {
+  transform: scale(1.06);
+}
+
+.dining-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 60%);
+}
+
+.dining-card__body {
+  padding: 24px 20px;
+}
+
+.dining-card__category {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.dining-card__name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.dining-card__desc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-white-muted);
+}
+
+/* Highlight strip */
+.dining-section__highlight {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.dining-highlight-item {
+  padding: 40px 32px;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.dining-highlight-item:last-child { border-right: none; }
+
+.dining-highlight-value {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.dining-highlight-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+}
+
+@media (max-width: 1024px) {
+  .dining-section__grid { grid-template-columns: repeat(2, 1fr); }
+  .dining-section__highlight { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .dining-section { padding: 80px 24px; }
+  .dining-section__grid { grid-template-columns: 1fr; }
+  .dining-section__highlight { grid-template-columns: repeat(2, 1fr); }
+}

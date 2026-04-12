@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>🏬 American Dream Mall <br/> Digital Sales Platform & AI Chatbot</h1>
+  <p><strong>A high-performance modern web application built as a premium digital sales experience, featuring an integrated context-aware AI Assistant powered by a custom Retrieval-Augmented Generation (RAG) backend.</strong></p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📖 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project serves as a comprehensive, B2B-focused digital sales and leasing platform for the American Dream Mall—North America's largest entertainment and retail complex. It is designed to attract ultra-luxury retail partners, major brands, and global sponsors by showcasing the property's immense scale, architectural grandeur, and unprecedented foot traffic.
 
-## React Compiler
+To provide immediate, data-backed answers to prospective investors and retail partners, the platform features a fully custom **AI Chatbot integrated directly into the web interface**. The chatbot is bound strictly to internal research reports, ensuring it provides accurate, non-hallucinated leasing figures and architectural statistics using an advanced RAG pipeline.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Core Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **Premium, Dynamic Luxury UI:** Built with Framer Motion, the frontend utilizes glassmorphism, responsive micro-animations, and smooth-scrolling data reveals to match the aesthetic of high-end luxury brands (Gucci, Saint Laurent, Hermès).
+*   **Intelligent Leasing Assistant:** An integrated floating Chatbot provides instant, data-driven answers parsed exclusively from a confidential American Dream Mall Research Report.
+*   **Modular Component Architecture:** A highly scalable React structure organized by specific business offerings (e.g., Luxury The Avenue, Nickelodeon Theme Park Attractions, Fine Dining, Pop-up leasing).
+*   **Decoupled & Cloud-Ready Architecture:** The frontend is fully decoupled from the AI logic, enabling the React app to be hosted rapidly on Vercel while the heavy machine-learning backend operates exclusively in a Hugging Face Space Docker container.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Technology Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Frontend Architecture
+*   **Core:** React 18 with Vite for ultra-fast localized compilation.
+*   **Language:** TypeScript for strict type-safety and robust enterprise development.
+*   **Styling:** Vanilla CSS with custom tailored CSS variables—eschewing heavy utility frameworks to maintain pixel-perfect custom luxury animations.
+*   **Animation Engine:** Framer Motion for scroll-triggered viewport reveals and structural layout transitions.
+
+### RAG Backend & AI Architecture
+*   **Framework:** FastAPI & Uvicorn for asynchronous API bridging.
+*   **RAG Engine:** LangChain orchestration.
+*   **Vector Database:** Local persistent ChromaDB.
+*   **Embeddings Model:** HuggingFace `sentence-transformers/all-MiniLM-L6-v2`.
+*   **LLM Engine:** Arcee-AI Trinity via OpenRouter API.
+
+---
+
+## 🤖 RAG Chatbot Implementation Details
+
+The implementation of the chatbot relies on a custom-built Retrieval-Augmented Generation (RAG) pipeline residing in the `american-dream-mall-rag` subdirectory. 
+
+1. **Ingestion & Embedding (`ingest.py`):** 
+   A comprehensive internal research PDF is parsed via `PyPDFLoader` and structurally divided into overlapping semantic segments using a `RecursiveCharacterTextSplitter`. These chunks are vectorized locally using `sentence-transformers` and committed to a SQLite-backed ChromaDB store.
+2. **Contextual Retrieval (`rag_chain.py`):** 
+   When a user submits a query through the React UI, the FastAPI backend intercepts it, vectorizes the raw text, and performs a similarity similarity search against the ChromaDB. The top 3 most relevant textual data chunks are extracted.
+3. **Prompt Injection & Generation:** 
+   The extracted text is injected rigidly into a system prompt. The prompt commands the Arcee-AI LLM to only derive its answers from the injected text, effectively eliminating LLM hallucination and securing the business intelligence data pipeline.
+4. **Cloud Execution:** 
+   Deployed to Hugging Face Spaces using a Dockerized environment. A custom `startup.sh` script actively pulls the source PDF at server boot using API tokens, bypasses Hugging Face's restrictive Xet binary storage limits, dynamically generates the ChromaDB, and boots the FastAPI server on Port 7860 to serve the broader internet.
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Start the AI Backend
+```bash
+# Navigate to the backend directory
+cd american-dream-mall-rag
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure your environment secrets
+# Ensure you have a .env file with OPENROUTER_API_KEY and HUGGINGFACE_API_KEY
+
+# Ingest the PDF to build the Vector Database (One-time run)
+python ingest.py
+
+# Boot the FastAPI Server
+uvicorn main:app --reload
 ```
+*The backend will now listen on `http://localhost:8000`.*
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Start the Frontend Application
+```bash
+# Open a new terminal in the root directory
+# Install Node dependencies
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the Vite development server
+npm run dev
 ```
+*The web interface will map locally, usually to `http://localhost:5173`. Clicking the chatbot button will instantly communicate with your running Python backend.*

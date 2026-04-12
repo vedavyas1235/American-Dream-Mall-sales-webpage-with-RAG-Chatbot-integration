@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import './LeasingPage.css'
@@ -100,7 +100,6 @@ const STATS = [
 export default function LeasingPage() {
   const [activeTier, setActiveTier] = useState(0)
   const navigate = useNavigate()
-  const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { window.scrollTo(0, 0) }, [])
 

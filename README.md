@@ -97,4 +97,4 @@ This project was built and accelerated using a suite of cutting-edge AI technolo
 *   **Google Anti-Gravity** → Direct AI-assisted software development and agentic codebase management
 *   **GitHub Copilot** → Inline code assistance and semantic autocompletion
 *   **HuggingFace `sentence-transformers`** → Open-source local text embeddings for the RAG pipeline
-*   **OpenRouter Models (Arcee-AI Trinity)** → Open-source Large Language Models powering the generation phase
+*   **OpenRouter Models** → Open-source Large Language Models powering the generation phase

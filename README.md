@@ -37,6 +37,11 @@ To provide immediate, data-backed answers to prospective investors and retail pa
 *   **Embeddings Model:** HuggingFace `sentence-transformers/all-MiniLM-L6-v2`.
 *   **LLM Engine:** Arcee-AI Trinity via OpenRouter API.
 
+### Deployment
+*   **Frontend** → Vercel (auto-deploys on GitHub push)
+*   **RAG Backend** → HuggingFace Spaces (Dockerized)
+*   **CI/CD** → GitHub Actions (automated build checks)
+
 ---
 
 ## 🤖 RAG Chatbot Implementation Details

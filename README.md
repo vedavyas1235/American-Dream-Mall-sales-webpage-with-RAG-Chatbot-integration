@@ -85,3 +85,16 @@ npm install
 npm run dev
 ```
 *The web interface will map locally, usually to `http://localhost:5173`. Clicking the chatbot button will instantly communicate with your running Python backend.*
+
+---
+
+## 🧠 AI Tools & Models Used
+
+This project was built and accelerated using a suite of cutting-edge AI technologies and methodologies:
+
+*   **Google Gemini Deep Research** → Comprehensive research report generation & detailed implementation planning
+*   **Anthropic Claude Sonnet** → Detailed architectural analysis & logic bug fixes
+*   **Google Anti-Gravity** → Direct AI-assisted software development and agentic codebase management
+*   **GitHub Copilot** → Inline code assistance and semantic autocompletion
+*   **HuggingFace `sentence-transformers`** → Open-source local text embeddings for the RAG pipeline
+*   **OpenRouter Models (Arcee-AI Trinity)** → Open-source Large Language Models powering the generation phase
